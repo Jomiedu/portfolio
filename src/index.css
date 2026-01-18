@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+/* ============================================
+   MUYYASSIR EDU - PORTFOLIO DESIGN SYSTEM
+   Warm gradients + Glassmorphism + Premium Dark
+   ============================================ */
+
+@theme {
+  /* Primary Warm Accent Colors */
+  --color-accent-orange: #ff6b35;
+  --color-accent-amber: #f7931a;
+  --color-accent-gold: #ffb347;
+  --color-accent-coral: #ff6b6b;
+  --color-accent-pink: #ff8a9b;
+
+  /* Dark Theme Surfaces */
+  --color-obsidian: #050505;
+  --color-surface-1: #0a0a0a;
+  --color-surface-2: #111111;
+  --color-surface-3: #1a1a1a;
+  --color-surface-4: #222222;
+
+  /* Glassmorphism */
+  --color-glass-bg: rgba(255, 255, 255, 0.03);
+  --color-glass-bg-hover: rgba(255, 255, 255, 0.06);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-border-hover: rgba(255, 255, 255, 0.15);
+
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a3a3a3;
+  --color-text-muted: #737373;
+
+  /* Typography */
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Glassmorphism Card */
+@utility glass-card {
+  @apply bg-glass-bg backdrop-blur-xl border border-glass-border rounded-2xl;
+  @apply transition-all duration-300;
+  @apply hover:bg-glass-bg-hover hover:border-glass-border-hover;
+}
+
+/* Glass Panel (no hover effects) */
+@utility glass-panel {
+  @apply bg-glass-bg backdrop-blur-xl border border-glass-border;
+}
+
+/* Gradient Text */
+@utility gradient-text {
+  @apply bg-gradient-to-r from-accent-orange via-accent-amber to-accent-coral bg-clip-text text-transparent;
+}
+
+/* Gradient Text Alt */
+@utility gradient-text-alt {
+  @apply bg-gradient-to-r from-accent-gold via-accent-pink to-accent-coral bg-clip-text text-transparent;
+}
+
+/* Warm Glow Effect */
+@utility glow-warm {
+  box-shadow: 0 0 60px rgba(255, 107, 53, 0.3), 0 0 100px rgba(247, 147, 26, 0.2);
+}
+
+/* Subtle Glow */
+@utility glow-subtle {
+  box-shadow: 0 0 40px rgba(255, 107, 53, 0.15);
+}
+
+/* Gradient Border */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--color-accent-orange), var(--color-accent-amber), var(--color-accent-coral));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+:root {
+  --background: 5 5 5;
+  --foreground: 255 255 255;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-obsidian text-text-primary font-sans antialiased;
+  @apply selection:bg-accent-orange/20 selection:text-accent-orange;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-surface-1;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-surface-4 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent-orange/50;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}

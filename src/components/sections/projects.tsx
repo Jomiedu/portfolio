@@ -72,7 +72,7 @@ const Projects = () => {
                                 >
                                     {project.image ? (
                                         <img
-                                            src={project.image}
+                                            src={`${import.meta.env.BASE_URL}${project.image.slice(1)}`}
                                             alt={project.title}
                                             className="absolute inset-0 w-full h-full object-contain bg-surface-3"
                                         />

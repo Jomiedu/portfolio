@@ -120,7 +120,7 @@ const Hero = () => {
                         {/* Profile Image Container */}
                         <div className="relative glass-card p-2 rounded-3xl overflow-hidden">
                             <img
-                                src="/profile.png"
+                                src={`${import.meta.env.BASE_URL}profile.png`}
                                 alt="Muyyassir Edu"
                                 className="w-full h-auto rounded-2xl object-cover"
                             />
